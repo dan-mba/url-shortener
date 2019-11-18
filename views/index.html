@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>URL Shortener</title>
+      <link rel="shortcut icon" href="https://cdn.glitch.com/604bd3ad-06c2-46e9-9f7d-fceb5ee21b51%2Ffavicon.ico?v=1574081897419" type="image/x-icon"/>
+      <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" type="text/css">
+      <link href="/public/style.css" rel="stylesheet" type="text/css">
+   </head>
+
+   <body>
+      <div class="container">
+
+        <form action="api/shorturl/new" method="POST">
+          <label for="url_input">URL to be shortened</label>
+          <input id="url_input" type="text" name="url" value="https://www.google.com">
+          <button type="submit">POST URL</button>
+        </form>
+
+        <div>
+          <h3>Shortened URL</h3>
+          <a id="shortUrl" target="_blank" rel="noopener"></a>
+          <span id="shortErr">Bad URL</span>
+        </div>
+     </div>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+     <script src="/public/post.js"></script>
+   </body>
+</html>
