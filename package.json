@@ -2,6 +2,7 @@
   "name": "url-shortener",
   "version": "0.0.1",
   "description": "URL Shortener Microservice",
+  "private": true,
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -11,8 +12,8 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongodb": "^3.3.2",
-    "mongoose": "^5.7.3",
+    "mongodb": "^3.3.4",
+    "mongoose": "^5.7.11",
     "mongoose-auto-increment": "^5.0.1",
     "valid-url": "^1.0.9"
   },
