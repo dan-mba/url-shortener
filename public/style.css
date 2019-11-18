@@ -1,0 +1,56 @@
+/****** Main Styling ******/
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	color: #111;
+	background-color: #d8d8d8;
+	text-align: center;
+	line-height: 1.4em;
+}
+
+.container {
+	padding: 0;
+	margin: 35vh auto 0;
+  max-width: 600px;
+  width: 90vw;
+}
+
+h3 {
+  margin-top: 4vh;
+}
+
+
+a {
+	color: #2574A9;
+}
+
+form {
+  border: solid 1px #303030;
+  border-radius: 5px;
+  margin: 10px auto;
+  padding: 20px;
+}
+
+label {
+  margin-right: 10px;
+}
+
+input {
+  padding: 5px;
+}
+
+input[type=text] {
+  width: 220px;
+  text-align: center;
+}
+
+button {
+  border-radius: 5px;
+  height: 1.8em;
+  border: 1px solid #303030;
+  background-color: #303030;
+  color: #eee;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
