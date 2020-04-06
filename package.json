@@ -13,12 +13,12 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongodb": "^3.5.5",
-    "mongoose": "^5.9.4",
+    "mongoose": "^5.9.7",
     "mongoose-auto-increment": "^5.0.1",
     "valid-url": "^1.0.9"
   },
   "engines": {
-    "node": "10.x"
+    "node": "12.x"
   },
   "keywords": [
     "node",
@@ -28,6 +28,6 @@
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-import": "^2.20.1"
+    "eslint-plugin-import": "^2.20.2"
   }
 }
