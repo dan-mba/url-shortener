@@ -14,7 +14,7 @@
     "express": "^4.17.1",
     "mongodb": "^3.5.7",
     "mongoose": "^5.9.12",
-    "mongoose-auto-increment": "^5.0.1",
+    "mongoose-sequence": "^5.2.2",
     "valid-url": "^1.0.9"
   },
   "engines": {

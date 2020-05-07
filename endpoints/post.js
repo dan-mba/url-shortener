@@ -23,7 +23,10 @@ exports.init = (app) => {
                 res.json({ original_url: req.body.url, new_url: data.urlId });
               } else {
                 mongoose.createAndSaveUrl(req.body.url, (err, data) => {
-                  if (err) { return; }
+                  if (err) {
+                    console.log(err);
+                    return;
+                  }
                   res.json({ original_url: req.body.url, new_url: data.urlId });
                 });
               }

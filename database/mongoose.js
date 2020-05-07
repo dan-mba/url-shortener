@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const autoIncrement = require("mongoose-auto-increment");
+const autoIncrement = require("mongoose-sequence")(mongoose);
 
 let Url = null;
 
@@ -14,9 +14,6 @@ exports.init = () => {
       useUnifiedTopology: true,
     });
 
-  // Initialize Mongoose auto increment plugin
-  autoIncrement.initialize(mongoose.connection);
-
   // Setup Mongoose Schema
   const { Schema } = mongoose;
   const urlSchema = new Schema({
@@ -24,9 +21,8 @@ exports.init = () => {
   });
 
   // Configure Mongoose auto increment plugin to manage urlId field
-  urlSchema.plugin(autoIncrement.plugin, {
-    model: "Url",
-    field: "urlId",
+  urlSchema.plugin(autoIncrement, {
+    inc_field: "urlId",
     startAt: 1,
   });
   Url = mongoose.model("Url", urlSchema);
