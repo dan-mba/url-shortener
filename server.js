@@ -3,6 +3,7 @@ const express = require("express");
 
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const RateLimit = require("express-rate-limit");
 const mongoose = require("./database/mongoose");
 const post = require("./endpoints/post");
 const get = require("./endpoints/get");
@@ -16,6 +17,14 @@ mongoose.init();
 
 // Enable CORS Requests
 app.use(cors());
+
+const limiter = new RateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 10,
+});
+
+// Apply rate limiter to all requests
+app.use(limiter);
 
 // Parse POST values
 app.use(bodyParser.urlencoded({ extended: false }));
