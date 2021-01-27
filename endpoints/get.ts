@@ -1,11 +1,12 @@
-const mongoose = require("../database/mongoose");
+import {findUrlId} from '../database/mongoose';
+import {Express} from 'express';
 
-exports.init = (app) => {
+exports.init = (app: Express) => {
   app.get(/\/api\/shorturl\/(.*)/, (req, res) => {
     const inputId = req.params[0];
 
     // If valid shorturl, redirect to site
-    mongoose.findUrlId(inputId, (err, data) => {
+    findUrlId(inputId, (err, data) => {
       if (err) {
         res.json({ error: "invalid Short URL" });
       } else {

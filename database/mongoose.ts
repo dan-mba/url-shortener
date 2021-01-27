@@ -1,12 +1,13 @@
-const mongoose = require("mongoose");
-const autoIncrement = require("mongoose-sequence")(mongoose);
+import mongoose from 'mongoose';
+import sequence from 'mongoose-sequence';
+const autoIncrement = sequence(mongoose as unknown as mongoose.Schema);
 
-let Url = null;
+let Url: mongoose.Model<mongoose.Document<any>>;
 
-exports.init = () => {
+export function dbInit()  {
   /* Initialize DB */
   // connect to mongoDB database using mongoose. URL is in .env file for security purposes
-  mongoose.connect(process.env.MONGO_URI,
+  mongoose.connect(process.env.MONGO_URI!,
     {
       useNewUrlParser: true,
       useCreateIndex: true,
@@ -15,12 +16,14 @@ exports.init = () => {
     });
 
   // Setup Mongoose Schema
-  const { Schema } = mongoose;
-  const urlSchema = new Schema({
+  const urlSchema = new mongoose.Schema({
     url: String,
   });
 
+
+
   // Configure Mongoose auto increment plugin to manage urlId field
+  // @ts-ignore
   urlSchema.plugin(autoIncrement, {
     inc_field: "urlId",
     startAt: 1,
@@ -28,8 +31,8 @@ exports.init = () => {
   Url = mongoose.model("Url", urlSchema);
 };
 
-exports.createAndSaveUrl = (inputUrl, done) => {
-  const url = new Url({ url: inputUrl });
+export function createAndSaveUrl(inputUrl: string, done: (...args: any[]) => any) {
+  const url = new Url({ url: inputUrl }!);
   url.save((err, data) => {
     if (err) {
       done(err);
@@ -39,8 +42,8 @@ exports.createAndSaveUrl = (inputUrl, done) => {
   });
 };
 
-exports.findUrl = (inputUrl, done) => {
-  Url.findOne({ url: inputUrl }, (err, data) => {
+export function findUrl(inputUrl: string, done: (...args: any[])=> any)  {
+  Url.findOne({ url: inputUrl }, (err:any, data:any) => {
     if (err) {
       done(err);
     } else {
@@ -49,8 +52,8 @@ exports.findUrl = (inputUrl, done) => {
   });
 };
 
-exports.findUrlId = (inputId, done) => {
-  Url.findOne({ urlId: inputId }, (err, data) => {
+export function findUrlId(inputId: any, done: (...args: any[])=> any) {
+  Url.findOne({ urlId: inputId }, (err: any, data: any) => {
     if (err) {
       done(err);
     } else {
