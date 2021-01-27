@@ -19,7 +19,7 @@
     "valid-url": "^1.0.9"
   },
   "engines": {
-    "node": "12.x"
+    "node": "14.x"
   },
   "keywords": [
     "node",
