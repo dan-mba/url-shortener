@@ -1,7 +1,7 @@
 {
   "name": "url-shortener",
   "version": "0.0.1",
-  "description": "URL Shortener Microservice",
+  "description": "URL Shortener Microservice - Glitch",
   "private": true,
   "main": "server.js",
   "scripts": {
