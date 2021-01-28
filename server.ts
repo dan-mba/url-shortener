@@ -4,14 +4,12 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import RateLimit from 'express-rate-limit';
 import {dbInit} from './database/mongoose';
-const post = require("./endpoints/post");
-const get = require("./endpoints/get");
+import post from './endpoints/post';
+import get from './endpoints/get';
 
 dotenv.config();
 
-
 const app = express();
-
 const port = process.env.PORT || 3000;
 
 // Setup mongoose
@@ -39,10 +37,10 @@ app.get("/", (_, res) => {
 });
 
 // Post API endpoint
-post.init(app);
+post(app);
 
 // GET API endpoint
-get.init(app);
+get(app);
 
 app.listen(port, () => {
   console.log("Node.js listening ...");

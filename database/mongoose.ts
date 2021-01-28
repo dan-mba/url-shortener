@@ -20,9 +20,8 @@ export function dbInit()  {
     url: String,
   });
 
-
-
   // Configure Mongoose auto increment plugin to manage urlId field
+  // ignore type conversion issue from @types/mongoose-sequence
   // @ts-ignore
   urlSchema.plugin(autoIncrement, {
     inc_field: "urlId",
@@ -43,7 +42,7 @@ export function createAndSaveUrl(inputUrl: string, done: (...args: any[]) => any
 };
 
 export function findUrl(inputUrl: string, done: (...args: any[])=> any)  {
-  Url.findOne({ url: inputUrl }, (err:any, data:any) => {
+  Url.findOne({ url: inputUrl }, (err: any, data: any) => {
     if (err) {
       done(err);
     } else {

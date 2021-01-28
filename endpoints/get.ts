@@ -1,7 +1,7 @@
 import {findUrlId} from '../database/mongoose';
 import {Express} from 'express';
 
-exports.init = (app: Express) => {
+function get(app: Express) {
   app.get(/\/api\/shorturl\/(.*)/, (req, res) => {
     const inputId = req.params[0];
 
@@ -15,3 +15,4 @@ exports.init = (app: Express) => {
     });
   });
 };
+export default get;

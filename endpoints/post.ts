@@ -4,7 +4,7 @@ import { URL } from 'url';
 import {findUrl, createAndSaveUrl} from '../database/mongoose';
 import {Express} from 'express';
 
-export function init(app: Express) {
+export function post(app: Express) {
   // POST API endpoint...
   app.post("/api/shorturl/new", (req, res) => {
     // Verify URL is valid format
@@ -38,5 +38,4 @@ export function init(app: Express) {
     }
   });
 }
-
-export default init;
+export default post;
