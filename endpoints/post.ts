@@ -1,10 +1,10 @@
-const validUrl = require("valid-url");
-const dns = require("dns");
-const { URL } = require("url");
+import validUrl from 'valid-url';
+import dns from 'dns';
+import { URL } from 'url';
+import {findUrl, createAndSaveUrl} from '../database/mongoose';
+import {Express} from 'express';
 
-const mongoose = require("../database/mongoose");
-
-exports.init = (app) => {
+export function post(app: Express) {
   // POST API endpoint...
   app.post("/api/shorturl/new", (req, res) => {
     // Verify URL is valid format
@@ -17,12 +17,12 @@ exports.init = (app) => {
             res.json({ error: "invalid URL" });
           } else {
             // See if URL is already in DB
-            mongoose.findUrl(req.body.url, (err, data) => {
+            findUrl(req.body.url, (err, data) => {
               if (err) { return; }
               if (data) {
                 res.json({ original_url: req.body.url, new_url: data.urlId });
               } else {
-                mongoose.createAndSaveUrl(req.body.url, (err, data) => {
+                createAndSaveUrl(req.body.url, (err, data) => {
                   if (err) {
                     console.log(err);
                     return;
@@ -37,4 +37,5 @@ exports.init = (app) => {
       res.json({ error: "invalid URL" });
     }
   });
-};
+}
+export default post;
