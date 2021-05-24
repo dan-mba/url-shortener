@@ -35,7 +35,7 @@
     "@types/express-rate-limit": "^5.1.1",
     "@types/mongoose-sequence": "^3.0.4",
     "@types/valid-url": "^1.0.3",
-    "eslint": "^7.26.0",
+    "eslint": "^7.27.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.2"
   }
