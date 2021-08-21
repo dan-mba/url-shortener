@@ -2,11 +2,15 @@ import validUrl from 'valid-url';
 import dns from 'dns';
 import { URL } from 'url';
 import {findUrl, createAndSaveUrl} from '../database/mongoose';
-import {Express} from 'express';
+import {FastifyInstance} from 'fastify';
 
-export function post(app: Express) {
+async function post(app: FastifyInstance) {
   // POST API endpoint...
-  app.post("/api/shorturl/new", (req, res) => {
+  app.post<{
+    Body: {
+      url: string
+    }
+  }>("/api/shorturl/new", async (req, res) => {
     // Verify URL is valid format
     if (validUrl.isWebUri(req.body.url)) {
       const myURL = new URL(req.body.url);
@@ -14,28 +18,29 @@ export function post(app: Express) {
       dns.lookup(myURL.hostname,
         (err) => {
           if (err) {
-            res.json({ error: "invalid URL" });
+            res.send({ error: "invalid URL" });
           } else {
             // See if URL is already in DB
             findUrl(req.body.url, (err, data) => {
               if (err) { return; }
               if (data) {
-                res.json({ original_url: req.body.url, new_url: data.urlId });
+                res.send({ original_url: req.body.url, new_url: data.urlId });
               } else {
                 createAndSaveUrl(req.body.url, (err, data) => {
                   if (err) {
                     console.log(err);
                     return;
                   }
-                  res.json({ original_url: req.body.url, new_url: data.urlId });
+                  res.send({ original_url: req.body.url, new_url: data.urlId });
                 });
               }
             });
           }
         });
     } else {
-      res.json({ error: "invalid URL" });
+      res.send({ error: "invalid URL" });
     }
   });
 }
+
 export default post;

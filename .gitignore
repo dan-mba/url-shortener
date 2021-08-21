@@ -62,3 +62,6 @@ typings/
 
 #typescript build dir
 build
+
+#VSCode settings
+.vscode

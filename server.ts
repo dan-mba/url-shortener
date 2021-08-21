@@ -1,47 +1,55 @@
+import path from 'path';
 import dotenv from 'dotenv';
-import express from 'express';
-import bodyParser from 'body-parser';
-import cors from 'cors';
-import RateLimit from 'express-rate-limit';
+import fastifyServer from 'fastify';
+import cors from 'fastify-cors';
+import RateLimit from 'fastify-rate-limit';
+import fastifyStatic from 'fastify-static';
+import fastifyBody from 'fastify-formbody'
 import {dbInit} from './database/mongoose';
 import post from './endpoints/post';
 import get from './endpoints/get';
 
 dotenv.config();
 
-const app = express();
+const fastify = fastifyServer();
 const port = process.env.PORT || 3000;
 
 // Setup mongoose
-dbInit();
+fastify.register(dbInit);
 
 // Enable CORS Requests
-app.use(cors());
-
-const limiter = RateLimit({
-  windowMs: 1 * 60 * 1000, // 1 minute
-  max: 10,
-});
+fastify.register(cors);
 
 // Apply rate limiter to all requests
-app.use(limiter);
+fastify.register(RateLimit, {
+  max: 10,
+  timeWindow: '1 minute'
+});
 
 // Parse POST values
-app.use(bodyParser.urlencoded({ extended: false }));
+fastify.register(fastifyBody);
 
-// Setup seving public files
-app.use("/public", express.static(`${process.cwd()}/public`));
+// Setup serving public files
+fastify.register(fastifyStatic, {
+  prefix: '/public',
+  root: `${process.cwd()}/public`
+});
+
 // Setup home page
-app.get("/", (_, res) => {
-  res.sendFile(`${process.cwd()}/views/index.html`);
+fastify.get("/", async (_, res) => {
+  res.sendFile('index.html',`${process.cwd()}/views`);
 });
 
 // Post API endpoint
-post(app);
+fastify.register(post);
 
 // GET API endpoint
-get(app);
+fastify.register(get);
 
-app.listen(port, () => {
-  console.log("Node.js listening ...");
+fastify.listen(port, (err, address) => {
+  if (err) {
+    console.error(err);
+    process.exit(1);
+  }
+  console.log(`Your fastify is listening on port ${address}`);
 });

@@ -1,13 +1,14 @@
 import mongoose from 'mongoose';
 import sequence from 'mongoose-sequence';
+
 const autoIncrement = sequence(mongoose as unknown as mongoose.Schema);
 
 let Url: mongoose.Model<mongoose.Document<any>>;
 
-export function dbInit()  {
+export async function dbInit()  {
   /* Initialize DB */
   // connect to mongoDB database using mongoose. URL is in .env file for security purposes
-  mongoose.connect(process.env.MONGO_URI!,
+  await mongoose.connect(process.env.MONGO_URI!,
     {
       useNewUrlParser: true,
       useCreateIndex: true,
