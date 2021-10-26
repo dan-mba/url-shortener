@@ -31,7 +31,7 @@
     "@tsconfig/node14": "^1.0.1",
     "@types/mongoose-sequence": "^3.0.6",
     "@types/valid-url": "^1.0.3",
-    "eslint": "^8.0.0",
+    "eslint": "^8.1.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.24.2"
   }
