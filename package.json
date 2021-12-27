@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "dotenv": "^10.0.0",
-    "fastify": "^3.25.1",
+    "fastify": "^3.25.2",
     "fastify-cors": "^6.0.2",
     "fastify-formbody": "^5.2.0",
     "fastify-rate-limit": "^5.7.0",
