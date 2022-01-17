@@ -8,7 +8,7 @@
     "start": "tsc && node build/server.js"
   },
   "dependencies": {
-    "dotenv": "^10.0.0",
+    "dotenv": "^13.0.1",
     "fastify": "^3.25.3",
     "fastify-cors": "^6.0.2",
     "fastify-formbody": "^5.2.0",
