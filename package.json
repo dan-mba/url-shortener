@@ -14,7 +14,7 @@
     "fastify-formbody": "^5.2.0",
     "fastify-rate-limit": "^5.7.2",
     "fastify-static": "^4.5.0",
-    "mongoose": "^6.2.6",
+    "mongoose": "^6.2.7",
     "mongoose-sequence": "^5.3.1",
     "typescript": "^4.6.2",
     "valid-url": "^1.0.9"
