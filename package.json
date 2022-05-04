@@ -8,19 +8,19 @@
     "start": "tsc && node build/server.js"
   },
   "dependencies": {
+    "@fastify/cors": "^7.0.0",
+    "@fastify/formbody": "^6.0.0",
+    "@fastify/rate-limit": "^6.0.0",
+    "@fastify/static": "^5.0.2",
     "dotenv": "^16.0.0",
     "fastify": "^3.29.0",
-    "fastify-cors": "^6.0.3",
-    "fastify-formbody": "^5.2.0",
-    "fastify-rate-limit": "^5.8.0",
-    "fastify-static": "^4.6.1",
     "mongoose": "^6.3.2",
     "mongoose-sequence": "^5.3.1",
     "typescript": "^4.6.4",
     "valid-url": "^1.0.9"
   },
   "engines": {
-    "node": "14.x"
+    "node": "16.x"
   },
   "keywords": [
     "node",
@@ -28,7 +28,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@tsconfig/node14": "^1.0.1",
+    "@tsconfig/node16": "^1.0.2",
     "@types/mongoose-sequence": "^3.0.7",
     "@types/valid-url": "^1.0.3",
     "eslint": "^8.14.0",
