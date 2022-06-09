@@ -12,7 +12,9 @@ import get from './endpoints/get';
 dotenv.config();
 
 const fastify = fastifyServer();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT ? Number(process.env.PORT) : 3000;
+
+
 
 // Setup mongoose
 fastify.register(dbInit);
@@ -36,7 +38,7 @@ fastify.register(fastifyStatic, {
 });
 
 // Setup home page
-fastify.get("/", async (_, res) => {
+fastify.get("/", (_, res) => {
   res.sendFile('index.html',`${process.cwd()}/views`);
 });
 
@@ -46,7 +48,7 @@ fastify.register(post);
 // GET API endpoint
 fastify.register(get);
 
-fastify.listen(port, (err, address) => {
+fastify.listen({port: port}, (err, address) => {
   if (err) {
     console.error(err);
     process.exit(1);
