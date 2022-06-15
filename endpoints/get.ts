@@ -6,7 +6,7 @@ async function get(app: FastifyInstance) {
     Params: {
       inputId: string
     }
-  }>('/api/shorturl/:inputId', async (req, res) => {
+  }>('/api/shorturl/:inputId', (req, res) => {
     const inputId = req.params['inputId'];
 
     // If valid shorturl, redirect to site

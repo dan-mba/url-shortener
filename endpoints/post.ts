@@ -10,7 +10,7 @@ async function post(app: FastifyInstance) {
     Body: {
       url: string
     }
-  }>("/api/shorturl/new", async (req, res) => {
+  }>("/api/shorturl/new", (req, res) => {
     // Verify URL is valid format
     if (validUrl.isWebUri(req.body.url)) {
       const myURL = new URL(req.body.url);
