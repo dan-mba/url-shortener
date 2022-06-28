@@ -1,9 +1,10 @@
-import mongoose from 'mongoose';
+import mongoose, {Model, Schema} from 'mongoose';
 import sequence from 'mongoose-sequence';
 
-const autoIncrement = sequence(mongoose as unknown as mongoose.Schema);
+const autoIncrement = sequence(mongoose as unknown as Schema);
 
-let Url: mongoose.Model<mongoose.Document<any>>;
+let Url: Model<{ url?: string | undefined; }, {}, {}, {},
+  Schema<any, Model<any, any, any, any, any>, {}, {}, any, {}, "type", { url?: string | undefined; }>>;
 
 export async function dbInit()  {
   /* Initialize DB */
@@ -11,7 +12,7 @@ export async function dbInit()  {
   await mongoose.connect(process.env.MONGO_URI!);
 
   // Setup Mongoose Schema
-  const urlSchema = new mongoose.Schema({
+  const urlSchema = new Schema({
     url: String,
   });
 
