@@ -28,7 +28,7 @@ export async function dbInit()  {
 
 export function createAndSaveUrl(inputUrl: string, done: (...args: any[]) => any) {
   const url = new Url({ url: inputUrl }!);
-  url.save((err, data) => {
+  url.save((err: any, data: any) => {
     if (err) {
       done(err);
     } else {
