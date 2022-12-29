@@ -3,7 +3,7 @@ name: Deploy
 on:
   workflow_dispatch:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths-ignore:
       - ".github/**"
 
@@ -15,6 +15,6 @@ jobs:
       uses: wei/git-sync@v3
       with:
         source_repo: "https://github.com/dan-mba/url-shortener.git"
-        source_branch: "master"
+        source_branch: "main"
         destination_repo: ${{ secrets.glitch_git_URL }}
         destination_branch: "master"
