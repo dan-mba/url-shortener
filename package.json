@@ -21,7 +21,7 @@
     "valid-url": "^1.0.9"
   },
   "engines": {
-    "node": ">16"
+    "node": ">16.0"
   },
   "keywords": [
     "node",
