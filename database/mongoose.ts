@@ -4,7 +4,7 @@ import sequence from 'mongoose-sequence';
 const autoIncrement = sequence(mongoose as unknown as Schema);
 
 let Url: Model<{ url?: string | undefined; }, {}, {}, {},
-  Schema<any, Model<any, any, any, any, any>, {}, {}, any, {}, "type", { url?: string | undefined; }>>;
+  Schema<any, Model<any, any, any, any, any>, {}, {}, any, {}, any, { url?: string | undefined; }>>;
 
 export async function dbInit()  {
   /* Initialize DB */

@@ -5,7 +5,8 @@
   "private": true,
   "main": "server.js",
   "scripts": {
-    "start": "tsc && node build/server.js"
+    "start": "tsc && node build/server.js",
+    "ts": "tsc"
   },
   "dependencies": {
     "@fastify/cors": "^8.2.0",
