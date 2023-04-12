@@ -17,7 +17,7 @@
     "fastify": "^4.15.0",
     "mongoose": "^6.10.5",
     "mongoose-sequence": "^5.3.1",
-    "typescript": "^5.0.3",
+    "typescript": "^5.0.4",
     "valid-url": "^1.0.9"
   },
   "engines": {
