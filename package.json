@@ -15,7 +15,7 @@
     "@fastify/static": "^6.10.0",
     "dotenv": "^16.0.3",
     "fastify": "^4.15.0",
-    "mongoose": "^6.10.4",
+    "mongoose": "^6.10.5",
     "mongoose-sequence": "^5.3.1",
     "typescript": "^5.0.3",
     "valid-url": "^1.0.9"
