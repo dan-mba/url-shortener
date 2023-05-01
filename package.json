@@ -14,7 +14,7 @@
     "@fastify/rate-limit": "^8.0.0",
     "@fastify/static": "^6.10.1",
     "dotenv": "^16.0.3",
-    "fastify": "^4.15.0",
+    "fastify": "^4.17.0",
     "mongoose": "^6.10.5",
     "mongoose-sequence": "^5.3.1",
     "typescript": "^5.0.4",
