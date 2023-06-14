@@ -4,19 +4,18 @@ import {FastifyInstance} from 'fastify';
 async function get(app: FastifyInstance) {
   app.get<{
     Params: {
-      inputId: string
+      inputId: number
     }
-  }>('/api/shorturl/:inputId', (req, res) => {
+  }>('/api/shorturl/:inputId', async function (req, reply) {
     const inputId = req.params['inputId'];
 
     // If valid shorturl, redirect to site
-    findUrlId(inputId, (err, data) => {
-      if (err) {
-        res.send({ error: "invalid Short URL" });
-      } else {
-        res.redirect(data.url);
-      }
-    });
+    const data = await findUrlId(inputId)
+    if (!data) {
+      return { error: "invalid Short URL" };
+    } else {
+      reply.redirect(data.url);
+    }
   });
 }
 

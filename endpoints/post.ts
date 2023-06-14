@@ -1,8 +1,11 @@
+import {promisify} from 'util';
 import validUrl from 'valid-url';
-import dns from 'dns';
+import {lookup} from 'dns';
 import { URL } from 'url';
 import {findUrl, createAndSaveUrl} from '../database/mongoose';
 import {FastifyInstance} from 'fastify';
+
+const lookupAsync = promisify(lookup);
 
 async function post(app: FastifyInstance) {
   // POST API endpoint...
@@ -10,36 +13,29 @@ async function post(app: FastifyInstance) {
     Body: {
       url: string
     }
-  }>("/api/shorturl/new", (req, res) => {
+  }>("/api/shorturl/new", async function (req) {
     // Verify URL is valid format
-    if (validUrl.isWebUri(req.body.url)) {
-      const myURL = new URL(req.body.url);
-      // Verify host is valid
-      dns.lookup(myURL.hostname,
-        (err) => {
-          if (err) {
-            res.send({ error: "invalid URL" });
-          } else {
-            // See if URL is already in DB
-            findUrl(req.body.url, (err, data) => {
-              if (err) { return; }
-              if (data) {
-                res.send({ original_url: req.body.url, new_url: data.urlId });
-              } else {
-                createAndSaveUrl(req.body.url, (err, data) => {
-                  if (err) {
-                    console.log(err);
-                    return;
-                  }
-                  res.send({ original_url: req.body.url, new_url: data.urlId });
-                });
-              }
-            });
-          }
-        });
-    } else {
-      res.send({ error: "invalid URL" });
+    if (!validUrl.isWebUri(req.body.url)) {
+      return{ error: "invalid URL" };
     }
+    const myURL = new URL(req.body.url);
+    // Verify host is valid
+    try {
+      await lookupAsync(myURL.hostname);
+    } catch(err) {
+      return { error: "invalid URL" };
+    }
+    // See if URL is already in DB
+    const found = await findUrl(req.body.url);
+    if (found) {
+        return { original_url: req.body.url, new_url: found.urlId };
+    }
+    console.log('not found')
+    const saved = await createAndSaveUrl(req.body.url);
+    if (!saved) {
+      return;
+    }
+    return { original_url: req.body.url, new_url: saved.urlId };
   });
 }
 
