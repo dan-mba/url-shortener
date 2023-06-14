@@ -21,7 +21,7 @@ export async function dbInit()  {
   /* Initialize DB */
   // connect to mongoDB database using mongoose. URL is in .env file for security purposes
   await mongoose.connect(process.env.MONGO_URI!, {family: 4});
-};
+}
 
 export async function createAndSaveUrl(inputUrl: string) {
   const url = new Url({ url: inputUrl });
@@ -32,7 +32,7 @@ export async function createAndSaveUrl(inputUrl: string) {
     console.error(err);
     return null;
   }
-};
+}
 
 export async function findUrl(inputUrl: string)  {
   try {
@@ -42,9 +42,9 @@ export async function findUrl(inputUrl: string)  {
     console.error(err);
     return null;
   }
-};
+}
 
-export async function findUrlId(inputId: Number) {
+export async function findUrlId(inputId: number) {
   try {
     const data = await Url.findOne({ urlId: inputId });
     return data;
@@ -52,4 +52,4 @@ export async function findUrlId(inputId: Number) {
     console.error(err);
     return null;
   }
-};
+}

@@ -1,4 +1,3 @@
-import path from 'path';
 import dotenv from 'dotenv';
 import fastifyServer from 'fastify';
 import cors from '@fastify/cors';
@@ -13,8 +12,6 @@ dotenv.config();
 
 const fastify = fastifyServer();
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
-
-
 
 // Setup mongoose
 fastify.register(dbInit);

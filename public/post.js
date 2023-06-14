@@ -1,6 +1,3 @@
-/* eslint prefer-arrow-callback: 0, func-names: 0, object-shorthand: 0,
-   vars-on-top: 0, no-var: 0, prefer-template: 0, arrow-parens: 0 */
-
 function ready() {
   document.getElementById("shortErr").style.display = "none";
   document.getElementById("shortUrl").style.display = "none";
