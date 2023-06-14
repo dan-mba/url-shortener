@@ -30,7 +30,7 @@ async function post(app: FastifyInstance) {
     if (found) {
         return { original_url: req.body.url, new_url: found.urlId };
     }
-    console.log('not found')
+
     const saved = await createAndSaveUrl(req.body.url);
     if (!saved) {
       return;
