@@ -31,7 +31,8 @@ function ready() {
           document.getElementById("shortErr").style.display = "inline";
           document.getElementById("shortUrl").style.display = "none";
         }
-      });
+      })
+      .catch(err => console.error(err));
   });
 }
 
