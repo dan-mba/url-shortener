@@ -6,6 +6,11 @@ on:
     branches: [ main ]
     paths-ignore:
       - ".github/**"
+      
+# Allow one concurrent deployment
+concurrency:
+  group: "glitch"
+  cancel-in-progress: true
 
 jobs:
   repo-sync:
