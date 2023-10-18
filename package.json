@@ -15,7 +15,7 @@
     "@fastify/static": "^6.11.2",
     "@typegoose/auto-increment": "^3.6.0",
     "dotenv": "^16.3.1",
-    "fastify": "^4.23.2",
+    "fastify": "^4.24.2",
     "mongoose": "^7.5.4",
     "typescript": "^5.2.2",
     "valid-url": "^1.0.9"
