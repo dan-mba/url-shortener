@@ -9,7 +9,7 @@
     "ts": "tsc"
   },
   "dependencies": {
-    "@fastify/cors": "^8.4.0",
+    "@fastify/cors": "^8.4.1",
     "@fastify/formbody": "^7.4.0",
     "@fastify/rate-limit": "^8.0.3",
     "@fastify/static": "^6.11.2",
