@@ -17,7 +17,7 @@
     "dotenv": "^16.4.5",
     "fastify": "^4.26.2",
     "mongoose": "^7.6.5",
-    "typescript": "^5.4.4",
+    "typescript": "^5.4.5",
     "valid-url": "^1.0.9"
   },
   "engines": {
