@@ -33,7 +33,7 @@
     "@types/valid-url": "^1.0.7",
     "eslint": "^9.18.0",
     "globals": "^15.14.0",
-    "typescript-eslint": "^8.21.0"
+    "typescript-eslint": "^8.22.0"
   },
   "overrides": {
     "mongoose": "^7.8.4"
