@@ -4,7 +4,7 @@ import cors from '@fastify/cors';
 import RateLimit from '@fastify/rate-limit';
 import fastifyStatic from '@fastify/static';
 import fastifyBody from '@fastify/formbody'
-import {dbInit} from './database/mongoose';
+import {dbInit} from '../database/mongoose';
 import post from './endpoints/post';
 import get from './endpoints/get';
 

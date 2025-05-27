@@ -2,8 +2,8 @@ import {promisify} from 'util';
 import validUrl from 'valid-url';
 import {lookup} from 'dns';
 import { URL } from 'url';
-import {findUrl, createAndSaveUrl} from '../database/mongoose';
-import {FastifyInstance} from 'fastify';
+import {findUrl, createAndSaveUrl} from '../../database/mongoose';
+import type { FastifyInstance } from 'fastify';
 
 const lookupAsync = promisify(lookup);
 
@@ -23,6 +23,7 @@ async function post(app: FastifyInstance) {
     try {
       await lookupAsync(myURL.hostname);
     } catch(err) {
+      console.log(err)
       return { error: "invalid URL" };
     }
     // See if URL is already in DB

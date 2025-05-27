@@ -1,5 +1,5 @@
-import {findUrlId} from '../database/mongoose';
-import {FastifyInstance} from 'fastify';
+import {findUrlId} from '../../database/mongoose';
+import type { FastifyInstance } from 'fastify';
 
 async function get(app: FastifyInstance) {
   app.get<{
