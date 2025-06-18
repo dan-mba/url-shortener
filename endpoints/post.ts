@@ -22,7 +22,7 @@ async function post(app: FastifyInstance) {
     // Verify host is valid
     try {
       await lookupAsync(myURL.hostname);
-    } catch(err) {
+    } catch {
       return { error: "invalid URL" };
     }
     // See if URL is already in DB
