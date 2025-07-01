@@ -8,7 +8,7 @@ import {dbInit} from './database/mongoose';
 import post from './endpoints/post';
 import get from './endpoints/get';
 
-dotenv.config();
+dotenv.config({ quiet: true });
 
 const fastify = fastifyServer();
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
